@@ -34,6 +34,11 @@ setInterval(async () => {
 }, 1000);
 
 app.use(express.json());
+
+app.use(cors({
+    origin: "*",
+}));
+
 app.use('/7up-down', gameRoutes);
 
 app.use((err, req, res, next) => {
