@@ -1,5 +1,5 @@
 import express from 'express';
-import { signupController, loginController, logoutController } from '../controllers/authController.mjs';
+import { addFundsController } from '../controllers/fundsController.mjs';
 
 // Create a router instance
 const router = express.Router();

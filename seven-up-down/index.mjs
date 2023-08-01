@@ -1,5 +1,7 @@
 import express from 'express';
 import mongoose from 'mongoose';
+import { MongoClient } from 'mongodb';
+import { connectDB } from './repository/db.mjs';
 import cors from 'cors';
 import { Server } from 'socket.io';
 import http from 'http';
@@ -15,6 +17,7 @@ let counter = 31;
 
 const server = http.createServer(app);
 const io = new Server(server);
+const mongoDBClient = await connectDB();
 
 io.on('connection', (socket) => {
     // When a client connects, we'll send the current counter value and list of winners (empty at the start) to the frontend
@@ -22,7 +25,7 @@ io.on('connection', (socket) => {
     socket.emit('winners', { winningChoice: null, users: [] });
 });
 
-setInterval(async () => {
+setInterval(async (count) => {
     counter--;
     if (counter > 0) {
         console.log(counter + ' seconds left');
@@ -59,4 +62,4 @@ async function getCounter() {
 //     return bets;
 // }
 
-export { getCounter, io };
+export { getCounter, io, mongoDBClient, setInterval };

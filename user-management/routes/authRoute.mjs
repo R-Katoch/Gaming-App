@@ -7,10 +7,10 @@ import { authenticateUser } from '../middleware/authMiddleware.mjs';
 const router = express.Router();
 
 // Define the user signup route
-router.post('/signup', authenticateUser, signupController);
+router.post('/signup', signupController);
 
 // Define the user login route
-router.post('/login', authenticateUser, loginController);
+router.post('/login', loginController);
 
 // Define the logout route
 router.post('/logout', authenticateUser, logoutController);

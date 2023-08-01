@@ -1,7 +1,6 @@
 // Import necessary dependencies
 import jwt from 'jsonwebtoken';
 import User from '../models/user.mjs';
-dotenv.config();
 
 const jwtTokenSecret = "Rohit-Balley-Ankit";
 
